@@ -1,8 +1,8 @@
 const bcrypt = require('bcrypt')
-const Blacklist = require('e:/ITI/projects/SuperMama_BackEnd/helper/TokenBlackList');
+const Blacklist = require('../helper/TokenBlackList');
 const jwt = require('jsonwebtoken');
-const User = require('e:/ITI/projects/SuperMama_BackEnd/models/User');
-
+const User = require('../Schema/User');
+const mongoose = require('mongoose');
 
 
 /* #region get all users */
@@ -28,11 +28,16 @@ exports.getUserById = async (req, res) => {
     //else id will be extracted from login user token 
 
     const loginedID = (req.params.id != null && req.params.id != undefined) ? req.params.id :req.user._id;
-     
+    
     try {
+        //check if the id is valid mongoose object id
+         var isValid = mongoose.Types.ObjectId.isValid(loginedID);
+         if (!isValid) return res.status(401).send("This user id is not valid"); 
+
+        //check if user id is exist in DB
         const user = await User.findById(loginedID);
-        if (user) return  res.send(user);
-        else return res.status(404).send("This user id is not exist")
+        if (!user) return res.status(404).send("This user id is not exist") 
+        else return res.send(user);
     }
     catch (err) {
         res.send(err);
@@ -78,18 +83,25 @@ exports.addUser = async (req, res) => {
 /* #region update user */
 exports.updateUser = async (req, res) => {
     const loginedID = (req.params.id != undefined && req.params.id != null) ? req.params.id : req.user._id;
+
+     //check if the id is valid mongoose object id
+     var isValid = mongoose.Types.ObjectId.isValid(loginedID);
+     if (!isValid) return res.status(401).send("This user id is not valid"); 
+
     let user = await User.findById(loginedID);
     if(!user) return res.send({ message: 'This user id is not exist' })
 
     const updatedUser = req.body;
+ 
      /// if user send new password
-     if (updatedUser.Password != undefined && updatedUser.Password != null) {
+     if (updatedUser.password) {
         //// hashing password
+        console.log(updatedUser.password)
         const salt = await bcrypt.genSalt(10);
-        updatedUser.Password = await bcrypt.hash(updatedUser.Password, salt)
+        updatedUser.password = await bcrypt.hash(updatedUser.password, salt)
     }
 
-
+     
     let updates = {
       email: (updatedUser.email != "" && updatedUser.email != null) ?updatedUser.email.toLowerCase() : user.email.toLowerCase(),
       username: (updatedUser.username != "" && updatedUser.username != null) ? updatedUser.username : user.username,
@@ -117,6 +129,10 @@ exports.updateUser = async (req, res) => {
 exports.DeleteUser = async (req, res) => {
 
     const loginedID = (req.params.id != undefined && req.params.id != null) ? req.params.id : req.user._id;
+    //check if the id is valid mongoose object id
+    var isValid = mongoose.Types.ObjectId.isValid(loginedID);
+    if (!isValid) return res.status(401).send("This user id is not valid"); 
+    
     const user = await User.findById(loginedID);
     if (!user) return res.status(404).send({ message: "the user ID is not exist" })
     try{

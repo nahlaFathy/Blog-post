@@ -21,18 +21,18 @@ module.exports = async function jwtauth(req, res, next) {
         return result;
     }
 
-    const BlacklistResult = async () => {
-        const result = await blocked()
-        return result
-    }
-       
-    //// if token in blacklist 
-    if (await BlacklistResult() === true) return res.status(401).send({ error: 'Expired Token' })
+    
 
     //// decode token and verify if it's valid or not
     try {
        
-    
+        const BlacklistResult = async () => {
+            const result = await blocked()
+            return result
+        }
+           
+        //// if token in blacklist 
+        if (await BlacklistResult() === true) return res.status(401).send({ error: 'Expired Token' })
        const decoded = jwt.verify(token, process.env.SECRET_KEY)
       //// check if token expired    
      

@@ -21,7 +21,7 @@ router.get('/users', jwtauth, sessionauth, roles.grantAccess('readAny', 'profile
 
 
 /// register new user 
-router.post('/user/register', validate.registerValidationRules(), validate.validateRegister, User.addUser)
+router.post('/register', validate.registerValidationRules(), validate.validateRegister, User.addUser)
 
 
 //update user data

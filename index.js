@@ -8,6 +8,7 @@ const session = require('express-session');
 let RedisStore = require('connect-redis')(session);
 var cookieParser = require('cookie-parser');
 const IN_PROD = process.env.NODE_ENV === 'production';
+const Users = require('./Routes/UserRouter');
 
 
 /////// check if env variables is set or no /////
@@ -71,6 +72,9 @@ app.use((err, req, res, next) => {
     res.status(500).send({ error: 'internal server error' })
     next(err);
   });
+
+//////General Routes
+app.use('/api', Users)
 
   //////////////////////////////////////////////////////////////////////////
 app.listen(process.env.PORT || 3000, () => {
