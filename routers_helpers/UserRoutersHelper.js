@@ -132,12 +132,12 @@ exports.DeleteUser = async (req, res) => {
     //check if the id is valid mongoose object id
     var isValid = mongoose.Types.ObjectId.isValid(loginedID);
     if (!isValid) return res.status(401).send("This user id is not valid"); 
-    
+
     const user = await User.findById(loginedID);
     if (!user) return res.status(404).send({ message: "the user ID is not exist" })
     try{
         await User.deleteOne(user)
-        return res.status(200).redirect('http://localhost:3000/api/logout')
+        return res.status(200).redirect(process.env.API||'http://localhost:3000/api/logout')
     }
     catch(err){
         return res.send(err);
