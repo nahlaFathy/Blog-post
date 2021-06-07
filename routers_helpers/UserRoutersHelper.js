@@ -1,7 +1,7 @@
 const bcrypt = require('bcrypt')
-const Blacklist = require('../helper/TokenBlackList');
+const Blacklist = require('e:/ITI/projects/SuperMama_BackEnd/helper/TokenBlackList');
 const jwt = require('jsonwebtoken');
-const User = require('../models/User');
+const User = require('e:/ITI/projects/SuperMama_BackEnd/models/User');
 
 
 
