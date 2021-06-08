@@ -20,7 +20,12 @@ if (!process.env.SECRET_KEY) {
   };
 
 //// redis error logs
-let redisClient = redis.createClient();
+let redisClient = redis.createClient({
+  
+    host: process.env.REDIS_HOST,
+    port: process.env.REDIS_PORT,
+    password:process.env.REDIS_PASS
+});
 redisClient.on('error', err => {
   console.log('Error ' + err);
 });
@@ -50,7 +55,7 @@ app.use(cookieParser())                                 // Parse Cookie header a
 // This middleware will check if user's cookie is still saved in browser and user is not set,
 // then automatically log the user out.
 app.use((req, res, next) => {
-    console.log(req.cookies)
+    
     if (req.cookies.user && !req.session.user) {
       res.clearCookie('user');
     }

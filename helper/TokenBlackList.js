@@ -7,9 +7,10 @@ const Blacklist = createBlackList({
   errorRate: 0.001, // optional, error rate each day
   storeType: 'redis', // store type
   redisOptions: {
-    host: 'localhost',
-    port: 6379,
+    host: process.env.REDIS_HOST,
+    port: process.env.REDIS_PORT,
     key: process.env.REDIS_KEY, // optional: redis key prefix
+    password:process.env.REDIS_PASS
   }
   
 });
