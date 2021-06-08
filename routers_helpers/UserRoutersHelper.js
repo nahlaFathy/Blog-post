@@ -137,7 +137,7 @@ exports.DeleteUser = async (req, res) => {
     if (!user) return res.status(404).send({ message: "the user ID is not exist" })
     try{
         await User.deleteOne(user)
-        return res.status(200).redirect(process.env.API||'http://localhost:3000/api/logout')
+        return res.status(200).redirect(process.env.API_URL||'http://localhost:3000/api/logout')
     }
     catch(err){
         return res.send(err);
