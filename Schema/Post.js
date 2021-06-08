@@ -1,4 +1,6 @@
+const { ObjectID } = require('bson');
 const mongoose = require('mongoose');
+ObjectID = require('mongodb').ObjectID;
 
 //////////// schema for posts table in DB ////////////////////
 const postSchema = new mongoose.Schema({
@@ -7,9 +9,10 @@ const postSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,        
         ref: 'User'    
      },    
-     comments: [{        
+     comments: [{   
+        commentId:new ObjectID(),     
         text: String,        
-        postedBy: {            
+        commentedBy: {            
           type: mongoose.Schema.Types.ObjectId,            
           ref: 'User'        
         }    

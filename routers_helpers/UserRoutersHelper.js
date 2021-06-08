@@ -9,7 +9,7 @@ const mongoose = require('mongoose');
 exports.getUsers = async (req, res) => {
 
     try {
-    
+       
         const users = await User.find();
         if (users) return res.send(users);
         else return res.status(404).send("something went wrong");
@@ -178,7 +178,7 @@ exports.login = async (req, res) => {
     
      /////////// create token by user id and its role//////////
        const token=jwt.sign({ _id:user._id, role: user.role.toLowerCase() }, process.env.SECRET_KEY, { expiresIn: '1h' })
-
+        
      //////// set user session with session id 
         req.session.user = req.session.id;
         req.cookies.user = req.session.id;
