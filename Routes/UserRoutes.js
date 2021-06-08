@@ -21,7 +21,7 @@ router.get('/users', jwtauth, sessionauth, roles.grantAccess('readAny', 'profile
 
 
 /// register new user 
-router.post('/register', validate.registerValidationRules(), validate.validateRegister, User.addUser)
+router.post('/register', validate.registerValidationRules(), validate.validation, User.addUser)
 
 
 //update user data
@@ -40,7 +40,7 @@ router.delete('/user/:id', jwtauth, sessionauth, roles.grantAccess('deleteAny', 
 
 
 /// login
-router.post("/login", validate.LoginValidationRules(), validate.validateLogin, User.login)
+router.post("/login", validate.LoginValidationRules(), validate.validation, User.login)
 
 /// logout
 router.get('/logout', jwtauth, sessionauth, User.logout)

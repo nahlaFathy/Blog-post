@@ -20,5 +20,20 @@ exports.roles = (function () {
         .updateAny("profile")
         .deleteAny("profile")
 
+    ac.grant("user")
+       .readAny("post")
+       .updateOwn("post")
+       .deleteOwn("post")
+
+    ac.grant("supervisor")
+        .extend("user")
+        .readAny("post")
+
+    ac.grant("admin")
+        .extend("user")
+        .extend("supervisor")
+        .updateOwn("post")
+        .deleteAny("post")
+
     return ac;
 })();

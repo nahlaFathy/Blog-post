@@ -17,14 +17,6 @@ const registerValidationRules = () => {
             .withMessage('Password must be at least 5 chars long')
     ]
 }
-const validateRegister = async (req, res, next) => {
-
-    /////// check if there were any errors in req 
-    const errors = validationResult(req);
-    if (errors.isEmpty()) return next();
-    return res.status(422).send({ error: errors.errors[0].msg });
-
-}
 
 
 ///validation function for login route request body
@@ -39,18 +31,41 @@ const LoginValidationRules = () => {
     ]
 }
 
-const validateLogin = async (req, res, next) => {
 
-    /////// validate req body
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) return res.status(400).send({ error: errors.errors[0].msg });
-    return next();
+///validation function for login route request body
+const postValidationRules = () => {
+    return [
+        body('content').exists()
+            .withMessage('Post Content is required')
+               ]
 }
+
+
+
+///validation function for comment route request body
+const commentValidationRules = () => {
+    return [
+        body('text').exists()
+            .withMessage('Commet text is required')
+          ]
+}
+
+const validation = async (req, res, next) => {
+
+    /////// check if there were any errors in req 
+    const errors = validationResult(req);
+    if (errors.isEmpty()) return next();
+    return res.status(422).send({ error: errors.errors[0].msg });
+
+}
+
+
 
 module.exports = {
     registerValidationRules,
-    validateRegister,
+    validation,
     LoginValidationRules,
-    validateLogin
+    postValidationRules,
+    commentValidationRules
 
 }

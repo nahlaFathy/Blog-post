@@ -8,7 +8,8 @@ const session = require('express-session');
 let RedisStore = require('connect-redis')(session);
 var cookieParser = require('cookie-parser');
 const IN_PROD = process.env.NODE_ENV === 'production';
-const Users = require('./Routes/UserRouter');
+const Users = require('./Routes/UserRoutes');
+const Posts = require('./Routes/PostRoutes');
 
 
 /////// check if env variables is set or no /////
@@ -75,6 +76,7 @@ app.use((err, req, res, next) => {
 
 //////General Routes
 app.use('/api', Users)
+app.use('/api/post', Posts)
 
   //////////////////////////////////////////////////////////////////////////
 app.listen(process.env.PORT || 3000, () => {
