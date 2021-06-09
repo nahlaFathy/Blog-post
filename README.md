@@ -1,4 +1,4 @@
-# Blog-post BackEnd APIS
+# Blog-post Backend APIS
 
 
 Develpoing steps :
