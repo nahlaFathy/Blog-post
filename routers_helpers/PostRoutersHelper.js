@@ -143,13 +143,14 @@ exports.updatePost = async (req, res) => {
 
     //check if post exist
     let post = await Post.find({_id:postID,postedBy:loginedID});
+    
     if(post.length==0) return res.send({ message: 'This post id is not exist in your profile' })
 
     const updatedPost = req.body;
      
     let updates = {
       content: (updatedPost.content != "" && updatedPost.content != null) ?updatedPost.content : post.content,
-      postedBy:post.postedBy
+      postedBy:post[0].postedBy
     }
     try{
         post = await Post.findByIdAndUpdate(postID, updates, {
