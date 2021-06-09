@@ -12,6 +12,8 @@ Redis labs server for datastore
 
 Postman to test all routes and create API doc in this link : https://documenter.getpostman.com/view/14400429/TzY7dZPU
 
+Deployed Link for APIS : http://blog-post-imaging.herokuapp.com
+
 Authentication :JWT ,Session
 
 Develpoing steps :
