@@ -104,6 +104,11 @@ exports.addComment = async (req, res) => {
     const loginedID =req.user._id;
     const postID=req.params.id;
 
+
+      
+    //check if the id is valid mongoose object id
+    var isValid = mongoose.Types.ObjectId.isValid(postID);
+    if (!isValid) return res.status(400).send("This user id is not valid"); 
      ////// chech if post is exist
      let post = await Post.findById(postID)
      if (!post) return res.status(400).send('This post is not exist')
