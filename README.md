@@ -50,10 +50,10 @@ Create user routes to define APIs pathes (/Routes/UserRoutes.js)
 - routes created by using express.router => express.router().get(endpoint,callback)
 - routes have some parameters :
 
-     - endpoint It’s the value that comes after your domain name 
-     - callback tells the server what to do when the requested endpoint matches the endpoint stated
-     - optional parameter to add middleware that return a callback 
-     - 
+         - endpoint It’s the value that comes after your domain name 
+         - callback tells the server what to do when the requested endpoint matches the endpoint stated
+         - optional parameter to add middleware that return a callback 
+     
 middlewares:
 
 - JWT authentication middleware                    (/middleware/jwtauth.js)
