@@ -13,8 +13,8 @@ const Posts = require('./Routes/PostRoutes');
 
 
 /////// check if env variables is set or no /////
-if (!process.env.SECRET_KEY) {
-    console.error('FATAL ERROR: Secret_key is not defined !!')
+if (!process.env.SECRET_KEY||!process.env.REDIS_HOST||!process.env.REDIS_PASS||!process.env.REDIS_PORT||!proccess.env.SESSION_SECRET) {
+    console.error('FATAL ERROR: One of environment variables is not defined !!')
     ////// 0 exit with succeed otherwisw exit with fail
     process.exit(1)
   };

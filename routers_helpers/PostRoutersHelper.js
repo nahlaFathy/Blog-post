@@ -48,7 +48,7 @@ exports.getUserPosts = async (req, res) => {
     //else id will be extracted from login user token 
 
     const loginedID = (req.params.id != null && req.params.id != undefined) ? req.params.id :req.user._id;
-       console.log(loginedID)
+      
     try {
         //check if the id is valid mongoose object id
          var isValid = mongoose.Types.ObjectId.isValid(loginedID);
