@@ -108,7 +108,15 @@ created middlewares:
               I ceated  validators for login request , register request ,add post request , add comment requesr to ensure that client side 
               send a correct data before send it to the databse 
               
-used npm "dotenv" to store any keys in .env file
+-used npm "dotenv" to store any keys in .env file
+              
+step #8 :
+  - Tested all endpoints using postman locally and fixed errors or unhandled exceptions
+  
+step #9 :
+  - Deployed node js using github and heroku 
+  - Test all endpoints  and create APIs documentation using postman
+
 
 In this task I learned
 
@@ -126,10 +134,10 @@ Redis labs server for datastore
 
 Postman to test all routes and create API doc in this link : https://documenter.getpostman.com/view/14400429/TzY7dZPU
 
-Deployed Link for APIS : http://blog-post-imaging.herokuapp.com
+Deployed Link for APIs : http://blog-post-imaging.herokuapp.com
 
 Github Link : https://github.com/nahlaFathy/Blog-post
 
-Authentication :JWT ,Session
+Authentication : JWT ,Session
 
 - I created roles as one to one relationship so as an enhancement I can make one to many relationship (one user has many roles) but that depend on business requirements
