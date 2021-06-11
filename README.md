@@ -145,4 +145,3 @@ Github Link : https://github.com/nahlaFathy/Blog-post
 
 Authentication : JWT ,Session
 
-- I created roles as one to one relationship so as an enhancement I can make one to many relationship (one user has many roles) but that depend on business requirements
