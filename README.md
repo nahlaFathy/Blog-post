@@ -117,7 +117,9 @@ step #9 :
   - Deployed node js using github and heroku 
   - Test all endpoints  and create APIs documentation using postman
 
-
+step #10 :
+  -Make endpoints test using mocha and chai  
+  
 In this task I learned
 
      - using session authentication i used to use tokens only 
