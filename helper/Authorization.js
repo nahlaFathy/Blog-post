@@ -21,9 +21,9 @@ exports.roles = (function () {
         .deleteAny("profile")
 
     ac.grant("user")
-       .readAny("post")
-       .updateOwn("post")
-       .deleteOwn("post")
+        .readAny("post")
+        .updateOwn("post")
+        .deleteOwn("post")
 
     ac.grant("supervisor")
         .extend("user")

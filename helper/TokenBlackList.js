@@ -10,9 +10,9 @@ const Blacklist = createBlackList({
     host: process.env.REDIS_HOST,
     port: process.env.REDIS_PORT,
     key: process.env.REDIS_KEY, // optional: redis key prefix
-    password:process.env.REDIS_PASS
+    password: process.env.REDIS_PASS
   }
-  
+
 });
 
 module.exports = Blacklist;

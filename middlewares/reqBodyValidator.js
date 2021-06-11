@@ -6,13 +6,13 @@ const registerValidationRules = () => {
     return [
         body('email').isEmail().withMessage("Invalid Email")          ///// request body validation
             .exists().withMessage('Email is required')
-            .isLength({max:30}).withMessage('Email max length is 30'),
+            .isLength({ max: 30 }).withMessage('Email max length is 30'),
         body('username').exists()
             .withMessage('Username is required')
-            .isLength({max:20}).withMessage('Username max length is 20'),
+            .isLength({ max: 20 }).withMessage('Username max length is 20'),
         body('gender').exists()
             .withMessage('Gender is required')
-            .isLength({max:10}).withMessage('Gender max length is 10'),
+            .isLength({ max: 10 }).withMessage('Gender max length is 10'),
         body('password').isLength({ min: 5 })
             .withMessage('Password must be at least 5 chars long')
     ]
@@ -37,7 +37,7 @@ const postValidationRules = () => {
     return [
         body('content').exists()
             .withMessage('Post Content is required')
-               ]
+    ]
 }
 
 
@@ -47,7 +47,7 @@ const commentValidationRules = () => {
     return [
         body('text').exists()
             .withMessage('Commet text is required')
-          ]
+    ]
 }
 
 const validation = async (req, res, next) => {

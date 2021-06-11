@@ -6,8 +6,8 @@ const userSchema = new mongoose.Schema({
     username: { type: String, required: true },
     password: { type: String, required: true },
     gender: { type: String, required: true },
-    role:{type:String ,default:"user"}
-    
+    role: { type: String, default: "user" }
+
 })
 
 ///////match user schema with user table ///////

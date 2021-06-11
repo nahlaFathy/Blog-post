@@ -22,7 +22,7 @@ router.get('/show/All', jwtauth, sessionauth, roles.grantAccess('readAny', 'post
 
 
 /// add new post
-router.post('/add',jwtauth, sessionauth, validate.postValidationRules(), validate.validation, Post.addPost)
+router.post('/add', jwtauth, sessionauth, validate.postValidationRules(), validate.validation, Post.addPost)
 
 
 //update post data
@@ -38,7 +38,7 @@ router.get('/:id/comments', jwtauth, sessionauth, roles.grantAccess('readAny', '
 
 
 /// add new comment
-router.post('/:id/comment',jwtauth, sessionauth, validate.commentValidationRules(), validate.validation, Post.addComment)
+router.post('/:id/comment', jwtauth, sessionauth, validate.commentValidationRules(), validate.validation, Post.addComment)
 
 
 //update comment data
