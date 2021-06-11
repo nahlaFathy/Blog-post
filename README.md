@@ -139,7 +139,7 @@ Redis labs server for datastore
 
 Postman to test all routes and create API doc in this link : https://documenter.getpostman.com/view/14400429/TzY7dZPU
 
-Deployed Link for APIs : http://blog-post-imaging.herokuapp.com
+Deployed Link for APIs : https://blog-post-imaging.herokuapp.com
 
 Github Link : https://github.com/nahlaFathy/Blog-post
 
