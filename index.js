@@ -74,13 +74,14 @@ app.use((req, res, next) => {
 
 
   // a middleware that logs the request url, method, and current time 
+  if(process.env.NODE_ENV !='test'){
 app.use((req, res, next) => {
     var time = new Date();
     console.log('Time:', time.getHours(), ':', time.getMinutes(), ':', time.getSeconds())
     console.log('Method:', req.method)
     console.log('URL:', req.url)
     next()
-  });
+  });}
 
   // a global error handler that logs the error 
 app.use((err, req, res, next) => {

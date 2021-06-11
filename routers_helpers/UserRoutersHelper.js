@@ -137,7 +137,10 @@ exports.DeleteUser = async (req, res) => {
     if (!user) return res.status(404).send({ message: "the user ID is not exist" })
     try{
         await User.deleteOne(user)
+        if(process.env.NODE_ENV!='test')
         return res.status(200).redirect(`${process.env.API_URL}/api/logout`||'http://localhost:3000/api/logout')
+        else
+        return res.status(200).send({message:"User deleted successfully !!"})
     }
     catch(err){
         return res.send(err);
@@ -159,7 +162,7 @@ exports.logout = async (req, res) => {
             return res.send(err)
         }
 
-        res.send("Loggedout successfully");
+        res.send({message:"Loggedout successfully"});
     })
 }
 /* #endregion */
