@@ -25,10 +25,12 @@ Creating database schema for post collection
 {
 
     -content: requir,String
-    -postedBy:  ObjectId from 'User'        
+    -postedBy:  ObjectId from 'User'   
+    -createdAt: Date.now
     -comments: [{       
         - text: String,        
-        - commentedBy: ObjectId from 'User'        
+        - commentedBy: ObjectId from 'User'
+        - createdAt: Date.now
                 }]
 
 }
@@ -118,7 +120,8 @@ step #9 :
   - Test all endpoints  and create APIs documentation using postman
 
 step #10 :
-  -Make endpoints test using mocha and chai  
+
+  -Create endpoints test using mocha and chai  
   
 In this task I learned
 
